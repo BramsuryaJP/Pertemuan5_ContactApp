@@ -3,6 +3,8 @@
 const fs = require('fs');
 //readline
 const readline = require('readline');
+//third party module
+const validator = require('validator');
 // readline
 const rl = readline.createInterface({
   input: process.stdin,
@@ -30,15 +32,6 @@ const questions = (ask) => {
   })
 }
 
-// membuat fungsi untuk menampung pertanyaan
-const getQuestion = async () => {
-  const name = await questions (`What's your name ? `);
-  const phoneNumber = await questions ('Input your phone number : ');
-  const email = await questions ('Input your email : ');
-
-  getAnswer(name, phoneNumber, email);
-}
-
 // membuat fungsi untuk menampung jawaban
 const getAnswer = (name, phoneNumber, email) => {
   const contact = {name, phoneNumber, email};
@@ -50,4 +43,4 @@ const getAnswer = (name, phoneNumber, email) => {
   rl.close();
 }
 
-module.exports = { getQuestion }
+module.exports = { questions, getAnswer }
